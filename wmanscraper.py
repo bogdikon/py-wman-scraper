@@ -72,7 +72,7 @@ def get_current_temp_rsx(ip):
 #    except AttributeError:
 #        return False # TODO: Make these fahrenheit funcs work
 
-def get_cooler_percent(ip):
+def get_fan_speed(ip):
     url = f"http://{ip}/cpursx.ps3?/sman.ps3"
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.text, 'html.parser')
