@@ -13,7 +13,6 @@ def test_for_webman(ip):
         try:    # test if ANY webpage is running on given IP
             response = requests.get(url, headers=headers)
         except ConnectionError as e:
-            print(f'No webpage found on "{ip}"')
             return False
         if response is not None:
             soup = BeautifulSoup(response.text, 'html.parser')
