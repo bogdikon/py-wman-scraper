@@ -1,5 +1,5 @@
 import wmanscraper
-url = "192.168.0.106"
+url = "enter-ip-here"
 isup = wmanscraper.test_for_webman(url)
 cpu = wmanscraper.get_current_temp_cpu(url)
 rsx = wmanscraper.get_current_temp_rsx(url)
