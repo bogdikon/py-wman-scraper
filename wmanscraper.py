@@ -118,7 +118,7 @@ def get_firmware_info(ip):
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.text, 'html.parser')
     firmware = str(soup.find("a", href="/setup.ps3").get_text())
-    firmware_safe = firmware.split("PSID") # You dont need to share your PSID and IDPS, arent you? :D
+    firmware_safe = firmware.split("PSID") # You dont need to share your PSID and IDPS, do you? :D
     try:
         return str(firmware_safe[0])
     except AttributeError:
