@@ -124,7 +124,7 @@ def get_firmware_info(ip):
     except AttributeError:
         return False
 
-def get_current_game(ip, param):
+def get_current_game(ip):
     url = f"http://{ip}/cpursx.ps3?/sman.ps3"
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -137,15 +137,7 @@ def get_current_game(ip, param):
             titlename = re.search('>(.*)<', str(titlename)).group(1)
             if re.search('(.+)[0-9]{2}.[0-9]{2}', titlename) is not None:  # remove game version info if present
                 titlename = re.search('(.+)[0-9]{2}.[0-9]{2}', titlename).group(1)
-            if param == "id":
-                return titleid
-            elif param == "name":
-                return titlename
-            # match param:     UNAVAILABLE IN PYTHON < 3.10
-            #    case "id": # If you need titleid
-            #        return titleid
-            #    case "name": # If you need only game name
-            #        return titlename
+            return (titleid, titlename)
         except AttributeError:
             return False
 
